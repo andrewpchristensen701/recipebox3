@@ -1,0 +1,12 @@
+<a href="/">HOME</a>
+{% for items in data %}
+    <h1>{{items.title}} by <a href="/author/{{items.author.id}}/" >{{items.author}}</a></h1>
+    <br><br>
+    <h4><strong>Time to prepare: </strong> {{items.time}}</h4> 
+    <br><br>
+    <p>{{items.description}}</p>
+    <br><br>
+    <p>{{items.instructions}}</p>
+    <br>
+    <p><em>Created on: {{ items.post_date }}</em></p>
+{% endfor %}

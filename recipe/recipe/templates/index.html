@@ -1,0 +1,35 @@
+<link rel='stylesheet' href='/static/style.css'>
+
+<h1 class="titles">MY SECRET TREASURE CHEST OF RECIPES</h1>
+<nav id="navbar">
+<ul>
+    <li><a href="recipeadd/">ADD A RECIPE</a></li>
+    <li><a href="authoradd/">ADD A NEW USER</a></li>
+    {% if not user.is_authenticated %}
+        <li><a href="login/">LOGIN</a></li>
+    {% elif user.is_authenticated %}
+        <li><a href="logout/">LOGOUT</a></li>
+    {% endif %}
+</ul>
+</nav>
+
+
+
+
+
+
+<ul class="recipes">
+    {% for i in data %}
+        <li><h2><a href="recipes/{{i.id}}/">{{ i.title }}</a>, by <a href="author/{{i.author.id}}">{{ i.author }}</a></h2></li>
+        <br>
+        <li>Description:</li>
+        <br>
+        <ul>
+            <li>{{ i.description }}</li>
+            <br>
+            <li><strong>Time Required to Make: </strong>{{ i.time }} minutes</li>
+            <br>
+            <li><em>Posted: {{ i.post_date }}</em></li>
+        </ul>
+    {% endfor %}
+</ul>
